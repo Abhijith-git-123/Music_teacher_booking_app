@@ -16,6 +16,7 @@ httpcore==1.0.9
 httpx==0.28.1
 idna==3.10
 jiter==0.10.0
+mysqlclient==2.2.7
 neo4j==5.28.2
 numpy==2.3.2
 openai==1.98.0
