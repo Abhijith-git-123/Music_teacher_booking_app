@@ -1,0 +1,129 @@
+{#{% extends 'admin/admin_index.html' %}#}
+{#{% block admin %}#}
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<table width="500" border="1">#}
+{#  <tr>#}
+{#    <th scope="row">No</th>#}
+{#    <td>name</td>#}
+{#    <td>email</td>#}
+{#    <td>phone</td>#}
+{#    <td>pin </td>#}
+{#    <td>post</td>#}
+{#    <td>place</td>#}
+{#    <td>photo</td>#}
+{##}
+{##}
+{#  </tr>#}
+{#    {% for i in data3 %}#}
+{#  <tr>#}
+{#    <th scope="row">{{ forloop.counter }}</th>#}
+{#    <td>{{ i.name }}</td>#}
+{#    <td>{{ i.email }}</td>#}
+{#    <td>{{ i.phone }}</td>#}
+{#    <td>{{ i.pin }}</td>#}
+{#    <td>{{ i.post }}</td>#}
+{#    <td>{{ i.place }}</td>#}
+{#    <td><img src="{{ i.image }}" height="30px" width="30px"></td>#}
+{##}
+{#  </tr>#}
+{#    {% endfor %}#}
+{#</table>#}
+{##}
+{##}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+{% extends 'admin/admin_index.html' %}
+{% block admin %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Teacher List</title>
+    <style>
+        /* Scope all styles to the .admin-table-container class */
+        .admin-table-container {
+            font-family: Arial, sans-serif;
+            color: #ffffff; /* Light text color */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Table Styling */
+        .admin-table-container .styled-table {
+            width: 80%;
+            border-collapse: collapse;
+            background-color: rgba(255, 255, 255, 0.30); /* Transparent background */
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            margin: 20px 0;
+        }
+
+        .admin-table-container .styled-table th,
+        .admin-table-container .styled-table td {
+            padding: 12px 15px;
+            text-align: center;
+            color: #ffffff; /* Light text color */
+        }
+
+        .admin-table-container .styled-table th {
+            background-color: rgba(0, 0, 0, 0.7); /* Darker header background */
+        }
+
+        .admin-table-container .styled-table td {
+            background-color: rgba(0, 0, 0, 0.4); /* Slightly lighter cell background */
+        }
+
+        .admin-table-container .styled-table tr:hover {
+            background-color: rgba(255, 255, 255, 0.2); /* Highlight on hover */
+        }
+
+        .admin-table-container .styled-table img {
+            border-radius: 50%; /* Rounded image for a more polished look */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="admin-table-container">
+        <table class="styled-table" id="adm">
+            <tr>
+                <th scope="row">No</th>
+                <th>name</th>
+                <th>email</th>
+                <th>phone</th>
+                <th>pin</th>
+                <th>post</th>
+                <th>place</th>
+                <th>photo</th>
+            </tr>
+            {% for i in data3 %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ i.name }}</td>
+                <td>{{ i.email }}</td>
+                <td>{{ i.phone }}</td>
+                <td>{{ i.pin }}</td>
+                <td>{{ i.post }}</td>
+                <td>{{ i.place }}</td>
+                <td><img src="{{ i.image }}" height="70px" width="70px"></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
+{% endblock %}

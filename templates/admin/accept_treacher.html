@@ -1,0 +1,171 @@
+{#{% extends 'admin/admin_index.html' %}#}
+{#{% block admin %}#}
+{##}
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<table width="500" border="1">#}
+{#  <tr>#}
+{#    <th scope="row">No</th>#}
+{#    <td>name</td>#}
+{#    <td>email</td>#}
+{#    <td>phone</td>#}
+{#    <td>pin </td>#}
+{#    <td>post</td>#}
+{#    <td>place</td>#}
+{#    <td>&nbsp;</td>#}
+{#    <td>&nbsp;</td>#}
+{#  </tr>#}
+{#    {% for i in data2 %}#}
+{#  <tr>#}
+{#    <th scope="row">{{ forloop.counter }}</th>#}
+{#    <td>{{ i.name }}</td>#}
+{#    <td>{{ i.email }}</td>#}
+{#    <td>{{ i.phone }}</td>#}
+{#    <td>{{ i.pin }}</td>#}
+{#    <td>{{ i.post }}</td>#}
+{#    <td>{{ i.place }}</td>#}
+{#    <td><img src="{{ i.image }}" width="30px" height="30px"></td>#}
+{#    <td><a href="https://www.google.co.in/maps/?q={{ i.latitude }},{{ i.longitude }}">Click here</a> </td>#}
+{##}
+{#    <td><a href="/accept_teacher/{{ i.LOGIN.id }}">accept</a><br/><a href="/reject_teacher/{{ i.id }}">reject</a></td>#}
+{#  </tr>#}
+{#    {% endfor %}#}
+{#</table>#}
+{##}
+{##}
+{#</body>#}
+{#</html>#}
+{##}
+{#{% endblock %}#}
+{% extends 'admin/admin_index.html' %}
+{% block admin %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Teacher List</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212; /* Dark background */
+            color: #ffffff; /* Light text color */
+        }
+
+        /* Table Styling */
+        .styled-table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: rgba(255, 255, 255, 0.50); /* Transparent background */
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .styled-table th,
+        .styled-table td {
+            padding: 12px 15px;
+            text-align: center;
+            color: #ffffff; /* Light text color */
+        }
+
+        .styled-table th {
+            background-color: rgba(0, 0, 0, 0.7); /* Darker header background */
+
+        }
+
+        .styled-table td {
+            background-color: rgba(0, 0, 0, 0.4); /* Slightly lighter cell background */
+        }
+
+        .styled-table tr:hover {
+            background-color: rgba(255, 255, 255, 0.5); /* Highlight on hover */
+        }
+
+        /* Image Styling */
+        .styled-table img {
+            border-radius: 50%; /* Circular image */
+            border: 2px solid #ffffff; /* White border around image */
+        }
+
+        /* Link Styling */
+        .styled-table a {
+            color: #4CAF50; /* Green links */
+            text-decoration: none;
+        }
+
+        .styled-table a:hover {
+            color: #45a049; /* Darker green on hover */
+            text-decoration: underline;
+        }
+
+        /* Accept/Reject Buttons */
+        .styled-table .action-buttons a {
+            display: block;
+            padding: 5px 10px;
+            margin: 5px;
+            border-radius: 5px;
+            background-color: #007bff; /* Blue background */
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .styled-table .action-buttons a:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        .styled-table .action-buttons a.reject {
+            background-color: #dc3545; /* Red background for reject */
+        }
+
+        .styled-table .action-buttons a.reject:hover {
+            background-color: #a71d2a; /* Darker red on hover */
+        }
+    </style>
+</head>
+
+<body>
+<h1 style="color: white">VIEW MUSIC TEACHERS AND VERIFY</h1>
+    <table class="styled-table" id="adm">
+        <tr>
+            <th scope="row">No</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>PIN</th>
+            <th>Post</th>
+            <th>Place</th>
+            <th>Image</th>
+            <th>Location</th>
+            <th>Action</th>
+        </tr>
+        {% for i in data2 %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ i.name }}</td>
+            <td>{{ i.email }}</td>
+            <td>{{ i.phone }}</td>
+            <td>{{ i.pin }}</td>
+            <td>{{ i.post }}</td>
+            <td>{{ i.place }}</td>
+            <td><img src="{{ i.image }}" width="70px" height="70px"></td>
+            <td><a href="https://www.google.co.in/maps/?q={{ i.latitude }},{{ i.longitude }}">Click here</a></td>
+            <td class="action-buttons">
+                <a href="/accept_teacher/{{ i.LOGIN.id }}">Accept</a>
+                <a href="/reject_teacher/{{ i.id }}" class="reject" onclick="return confirm('Are you sure?')">>Reject</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+
+{% endblock %}

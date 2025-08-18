@@ -1,0 +1,103 @@
+{##}
+{#{% extends 'music_teacher/musicteacher_index.html' %}#}
+{#{% block teacher %}#}
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<table width="689" border="1">#}
+{#  <tr>#}
+{#    <th width="88" scope="row">NO </th>#}
+{#    <td width="100">CATEGORY</td>#}
+{#    <td width="127">START TIME</td>#}
+{#    <td width="122">END TIME</td>#}
+{#    <td width="98">DAY</td>#}
+{#    <td width="114">&nbsp;</td>#}
+{#  </tr>#}
+{#    {% for i in data10 %}#}
+{#  <tr>#}
+{#    <th scope="row">{{ forloop.counter }}</th>#}
+{#    <td>{{ i.OWN_CATEGORY.CATEGORY.category_name }}</td>#}
+{#    <td>{{ i.starttime }}</td>#}
+{#    <td>{{ i.endtime }}</td>#}
+{#    <td>{{ i.day }}</td>#}
+{#    <td><a href="/edit_time_sloat_get/{{ i.id }}">Edit</a><br /><a href="">Delete</a></td>#}
+{#  </tr>#}
+{#    {% endfor %}#}
+{#</table>#}
+{##}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+
+{% extends 'music_teacher/musicteacher_index.html' %}
+{% block teacher %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: white; /* Text color for better visibility on dark background */
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: rgba(0, 0, 0, 0.6); /* Transparent background */
+            border-radius: 10px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #fff; /* White border for contrast */
+        }
+        th {
+            background-color: rgba(255, 255, 255, 0.2); /* Slightly more opaque header */
+            font-weight: bold;
+        }
+        td a {
+            color: #00aaff; /* Link color */
+            text-decoration: none;
+        }
+        td a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<table id="music">
+  <tr>
+    <th>NO</th>
+    <td>CATEGORY</td>
+    <td>START TIME</td>
+    <td>END TIME</td>
+    <td>DAY</td>
+    <td>ACTIONS</td>
+  </tr>
+  {% for i in data10 %}
+  <tr>
+    <th scope="row">{{ forloop.counter }}</th>
+    <td>{{ i.OWN_CATEGORY.CATEGORY.category_name }}</td>
+    <td>{{ i.starttime }}</td>
+    <td>{{ i.endtime }}</td>
+    <td>{{ i.day }}</td>
+    <td>
+        <div class="btn btn-success" style="width: 80px"><a href="/edit_time_sloat_get/{{ i.id }}#module2" style="color: white">Edit</a></div><br /><br>
+        <div class="btn btn-danger" style="width: 80px"><a href="/delete_time_slot/{{ i.id }}" onclick="return confirm('Are you sure?')" style="color: white">Delete</a></div>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+
+</body>
+</html>
+{% endblock %}

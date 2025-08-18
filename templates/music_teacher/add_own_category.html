@@ -1,0 +1,111 @@
+{#{% extends 'music_teacher/musicteacher_index.html' %}#}
+{#{% block teacher %}#}
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form action="/add_own_category_post/{{ id }}" method="post">#}
+{#<table width="400" border="1">#}
+{#  <tr>#}
+{#    <th width="217" scope="row">ENTER FEES</th>#}
+{#    <td width="167"><label for="textfield2"></label>#}
+{#      <input type="text" name="fees" id="textfield2" /></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <th colspan="2" scope="row"><input type="submit" name="button" id="button" value="ADD" /></th>#}
+{#    </tr>#}
+{#</table>#}
+{##}
+{#</form>#}
+{##}
+{##}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+
+{% extends 'music_teacher/musicteacher_index.html' %}
+{% block teacher %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Untitled Document</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            /* Background image already set in the parent template */
+        }
+
+        /* Table Styling */
+        .styled-table {
+            width: 400px;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: rgba(255, 255, 255, 0.3); /* Transparent background */
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Subtle shadow for better visibility */
+        }
+
+        .styled-table th, .styled-table td {
+            padding: 15px;
+            text-align: left;
+            color: #fff; /* Light text for contrast */
+        }
+
+        .styled-table th {
+            background-color: rgba(0, 0, 0, 0.6); /* Darker header background */
+        }
+
+        .styled-table td {
+            background-color: rgba(0, 0, 0, 0.4); /* Lighter cell background */
+        }
+
+        /* Input and Button Styling */
+        input[type="text"], input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50; /* Green background for button */
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <form action="/add_own_category_post/{{ id }}" method="post">
+        <table class="styled-table">
+            <tr>
+                <th scope="row">ENTER FEES</th>
+                <td>
+                    <input type="text" name="fees" id="textfield2"  required/>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2" scope="row">
+                    <input type="submit" name="button" id="button" value="ADD" />
+                </th>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+{% endblock %}

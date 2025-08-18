@@ -1,0 +1,110 @@
+{#{% extends 'admin/admin_index.html' %}#}
+{#{% block admin %}#}
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<table width="517" border="1">#}
+{#  <tr>#}
+{#    <th width="63" scope="row">NO</th>#}
+{#    <td width="144">FEEDBACK</td>#}
+{#    <td width="158">USER NAME</td>#}
+{#    <td width="124">DATE</td>#}
+{#  </tr>#}
+{#    {% for i in data6 %}#}
+{#  <tr>#}
+{#    <th scope="row">{{ forloop.counter }}</th>#}
+{#    <td>{{ i.feedback }}</td>#}
+{#    <td>{{ i.USER.name }}</td>#}
+{#    <td>{{ i.date }}</td>#}
+{#  </tr>#}
+{#    {% endfor %}#}
+{#</table>#}
+{##}
+{##}
+{##}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+
+{% extends 'admin/admin_index.html' %}
+{% block admin %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Feedback List</title>
+    <style>
+        /* Scope all styles to the .admin-table-container class */
+        .admin-table-container {
+            font-family: Arial, sans-serif;
+            color: #ffffff; /* Light text color */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Table Styling */
+        .admin-table-container .styled-table {
+            width: 80%;
+            border-collapse: collapse;
+            background-color: rgba(255, 255, 255, 0.1); /* Transparent background */
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            margin: 20px 0;
+        }
+
+        .admin-table-container .styled-table th,
+        .admin-table-container .styled-table td {
+            padding: 12px 15px;
+            text-align: center;
+            color: #ffffff; /* Light text color */
+        }
+
+        .admin-table-container .styled-table th {
+            background-color: rgba(0, 0, 0, 0.7); /* Darker header background */
+        }
+
+        .admin-table-container .styled-table td {
+            background-color: rgba(0, 0, 0, 0.4); /* Slightly lighter cell background */
+        }
+
+        .admin-table-container .styled-table tr:hover {
+            background-color: rgba(255, 255, 255, 0.2); /* Highlight on hover */
+        }
+        th{
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="admin-table-container">
+        <table class="styled-table" id="adm">
+            <tr>
+                <th width="63" scope="row">NO</th>
+                <th width="144">FEEDBACK</th>
+                <th width="158">USER NAME</th>
+                <th width="124">DATE</th>
+            </tr>
+            {% for i in data6 %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ i.feedback }}</td>
+                <td>{{ i.USER.name }}</td>
+                <td>{{ i.date }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
+{% endblock %}

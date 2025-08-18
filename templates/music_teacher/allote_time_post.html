@@ -1,0 +1,142 @@
+{#{% extends 'music_teacher/musicteacher_index.html' %}#}
+{#{% block teacher %}#}
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body><form action="/add_class_time_post/{{ id }}" method="post">#}
+{#<table width="400" border="1">#}
+{#  <tr>#}
+{#    <th scope="row">DAY</th>#}
+{#    <td><label for="textfield6"></label>#}
+{#      <input type="text" name="day" id="textfield6" /></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <th scope="row">START TIME</th>#}
+{#    <td><label for="textfield7"></label>#}
+{#      <input type="time" name="strtime" id="textfield7" /></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <th scope="row">END TIME</th>#}
+{#    <td><label for="textfield8"></label>#}
+{#      <input type="time" name="endtime" id="textfield8" /></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <th colspan="2" scope="row"><input type="submit" name="button" id="button" value="allot" /></th>#}
+{#    </tr>#}
+{#</table>#}
+{##}
+{#</form>#}
+{##}
+{##}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+
+{% extends 'music_teacher/musicteacher_index.html' %}
+{% block teacher %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Add Class Time</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            /* Background image already set in the parent template */
+        }
+
+        /* Form Styling */
+        .styled-form {
+            width: 400px;
+            margin: 20px auto;
+            background-color: rgba(255, 255, 255, 0.3); /* Transparent background */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.6); /* Subtle shadow for better visibility */
+            padding: 20px;
+        }
+
+        .styled-form table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .styled-form th, .styled-form td {
+            padding: 15px;
+            text-align: left;
+        }
+
+        .styled-form th {
+            background-color: rgba(0, 0, 0, 0.6); /* Darker header background */
+            color: #fff; /* Light text for contrast */
+        }
+
+        .styled-form td {
+            background-color: rgba(0, 0, 0, 0.4); /* Lighter cell background */
+        }
+
+        /* Input and Button Styling */
+        input[type="text"], input[type="time"], input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50; /* Green background for button */
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <form action="/add_class_time_post/{{ id }}" method="post" class="styled-form">
+        <table>
+              <tr>
+               <th scope="row">Department:</th>
+               <td><label for="select"></label>
+                <select name="days" id="select" required>
+           <option value="Monday" >Monday</option>
+           <option value="Tuesday">Tuesday</option>
+           <option value="Wednesday">Wednesday</option>
+          <option value="Thursday">Thursday</option>
+          <option value="Friday">Friday</option>
+          <option value="Saturday">Saturday</option>
+      </select></td>
+  </tr>
+            <tr>
+                <th scope="row">START TIME</th>
+                <td>
+                    <input type="time" name="strtime" id="textfield7"  required/>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">END TIME</th>
+                <td>
+                    <input type="time" name="endtime" id="textfield8" required />
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2" scope="row">
+                    <input type="submit" name="button" id="button" value="Allot" />
+                </th>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+{% endblock %}

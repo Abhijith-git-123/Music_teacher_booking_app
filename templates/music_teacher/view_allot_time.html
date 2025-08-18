@@ -1,0 +1,108 @@
+{#{% extends 'music_teacher/musicteacher_index.html' %}#}
+{#{% block teacher %}#}
+{##}
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<table width="500" border="1">#}
+{#  <tr>#}
+{#    <th width="52" scope="row">NO</th>#}
+{#    <td width="134">DAY</td>#}
+{#    <td width="93">START TIME</td>#}
+{#    <td width="94">END TIME</td>#}
+{#    <td width="94"></td>#}
+{#  </tr>#}
+{#    {% for i in data14 %}#}
+{#  <tr>#}
+{#    <th scope="row">{{ forloop.counter }}</th>#}
+{#    <td>{{ i.day }}</td>#}
+{#    <td>{{ i.starttime }}</td>#}
+{#    <td>{{ i.endtime }}</td>#}
+{#    <td><a href="/allocate_times/{{ i.id }}/{{ rid }}">SELECT</a></td>#}
+{#  </tr>#}
+{#    {% endfor %}#}
+{#</table>#}
+{##}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+
+{% extends 'music_teacher/musicteacher_index.html' %}
+{% block teacher %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Manage Class Times</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            /* Background image already set in the parent template */
+        }
+
+        /* Table Styling */
+        .styled-table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: rgba(255, 255, 255, 0.3); /* Transparent background */
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.6); /* Subtle shadow for better visibility */
+        }
+
+        .styled-table th, .styled-table td {
+            padding: 15px;
+            text-align: left;
+            color: #fff; /* Light text for dark backgrounds */
+        }
+
+        .styled-table th {
+            background-color: rgba(0, 0, 0, 0.6); /* Darker header background */
+        }
+
+        .styled-table td {
+            background-color: rgba(0, 0, 0, 0.4); /* Lighter cell background */
+        }
+
+        .styled-table a {
+            color: #4CAF50; /* Green link color */
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .styled-table a:hover {
+            text-decoration: underline; /* Underline on hover for better UX */
+        }
+    </style>
+</head>
+
+<body>
+    <table class="styled-table" id="music">
+        <tr>
+            <th scope="row">NO</th>
+            <td>DAY</td>
+            <td>START TIME</td>
+            <td>END TIME</td>
+            <td></td>
+        </tr>
+        {% for i in data14 %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ i.day }}</td>
+            <td>{{ i.starttime }}</td>
+            <td>{{ i.endtime }}</td>
+            <td><div class="btn btn-success" ><a href="/allocate_times/{{ i.id }}/{{ rid }}#module2" style="color: wheat">SELECT</a></div></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+{% endblock %}

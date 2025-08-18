@@ -1,0 +1,102 @@
+{##}
+{#{% extends 'user/user_index.html' %}#}
+{#{% block user %}#}
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<table width="654" border="1">#}
+{#  <tr>#}
+{#    <th width="75" scope="row">NO</th>#}
+{#    <td width="102">USER NAME</td>#}
+{#    <td width="124">RATING</td>#}
+{#    <td width="209">MUSIC TEACHER NAME</td>#}
+{#    <td width="110">DATE</td>#}
+{#  </tr>#}
+{#    {% for i in data19 %}#}
+{#  <tr>#}
+{#    <th scope="row">&nbsp;</th>#}
+{#    <td>{{ i.USER.name }}</td>#}
+{#    <td>{{ i.rating }}</td>#}
+{#    <td>{{ i.MUSIC_TEACHER.name }}</td>#}
+{#    <td>{{ i.date }}</td>#}
+{#  </tr>#}
+{#    {% endfor %}#}
+{#</table>#}
+{##}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+
+{% extends 'user/user_index.html' %}
+{% block user %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ratings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: white; /* Text color for better visibility on dark background */
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: rgba(0, 0, 0, 0.6); /* Transparent background */
+            border-radius: 15px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Box shadow for depth */
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #fff; /* White border for contrast */
+        }
+        th {
+            background-color: rgba(255, 255, 255, 0.2); /* Slightly more opaque header */
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<table id="dataTable">
+  <tr>
+    <th>NO</th>
+    <td>USER NAME</td>
+    <td>RATING</td>
+    <td>MUSIC TEACHER NAME</td>
+    <td>DATE</td>
+  </tr>
+  {% for i in data19 %}
+  <tr>
+    <th scope="row">{{ forloop.counter }}</th>
+    <td>{{ i.USER.name }}</td>
+    <td>{% if i.rating == "0" %}
+        no rating
+      {% elif i.rating == "1" %}
+        <span class="rating">★☆☆☆☆</span>
+      {% elif i.rating == "2" %}
+        <span class="rating">★★☆☆☆</span>
+      {% elif i.rating == "3" %}
+        <span class="rating">★★★☆☆</span>
+      {% elif i.rating == "4" %}
+        <span class="rating">★★★★☆</span>
+      {% elif i.rating == "5" %}
+        <span class="rating">★★★★★</span>
+      {% endif %}</td>
+    <td>{{ i.MUSIC_TEACHER.name }}</td>
+    <td>{{ i.date }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+</body>
+</html>
+{% endblock %}

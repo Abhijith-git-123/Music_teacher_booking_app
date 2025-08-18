@@ -1,0 +1,111 @@
+{#{% extends 'music_teacher/musicteacher_index.html' %}#}
+{#{% block teacher %}#}
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<table width="600" border="1">#}
+{#  <tr>#}
+{#    <th width="88" scope="row">NO</th>#}
+{#    <td width="165">USER NAME</td>#}
+{#    <td width="175">PAYMENT METHOD</td>#}
+{#    <td width="144">PAYMENT STATUS</td>#}
+{#    <td width="144">date</td>#}
+{#  </tr>#}
+{#    {% for i in data15 %}#}
+{#  <tr>#}
+{#    <th scope="row">{{ forloop.counter }}</th>#}
+{#    <td>{{ i.REQUESTS.USER.name }}</td>#}
+{#    <td>{{ i.payment_method }}</td>#}
+{#    <td>{{ i.payment_status }}</td>#}
+{#    <td>{{ i.date }}</td>#}
+{#  </tr>#}
+{#    {% endfor %}#}
+{#</table>#}
+{##}
+{##}
+{##}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+
+
+{% extends 'music_teacher/musicteacher_index.html' %}
+{% block teacher %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Information</title>
+    <style>
+        body {
+            background: url('path/to/your/background-image.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: rgba(255, 255, 255, 0.3); /* Transparent background */
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: rgba(0, 0, 0, 0.1); /* Slightly darker for even rows */
+        }
+        tr:hover {
+            background-color: rgba(0, 0, 0, 0.2); /* Highlight on hover */
+        }
+        caption {
+            font-size: 1.5em;
+            margin: 10px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <table id="music">
+        <thead>
+            <tr>
+                <th>NO</th>
+                <th>USER NAME</th>
+                <th>PAYMENT METHOD</th>
+                <th>PAYMENT STATUS</th>
+                <th>AMOUNT</th>
+                <th>DATE</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in data15 %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ i.REQUESTS.USER.name }}<br><br>{{ i.REQUESTS.USER.email  }}<br><br>{{ i.REQUESTS.USER.phone  }}</td>
+                <td>{{ i.payment_method }}</td>
+                <td>{{ i.payment_status }}</td>
+                <td>{{ i.REQUESTS.OWN_CATEGORY.fees }}</td>
+                <td>{{ i.date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+{% endblock %}

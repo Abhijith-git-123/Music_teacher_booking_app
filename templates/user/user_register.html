@@ -1,0 +1,196 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form action="/user_register_post" method="post">#}
+{#<table width="300" border="1">#}
+{#  <tr>#}
+{#    <th width="148" scope="row">NAME</th>#}
+{#    <td width="136"><label for="textfield"></label>#}
+{#      <input type="text" name="name" id="textfield" /></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <th scope="row">PHONE</th>#}
+{#    <td><label for="textfield2"></label>#}
+{#      <input type="text" name="phone" id="textfield2" /></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <th scope="row">EMAIL</th>#}
+{#    <td><label for="textfield3"></label>#}
+{#      <input type="text" name="email" id="textfield3" /></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <th scope="row">PIN</th>#}
+{#    <td><label for="textfield4"></label>#}
+{#      <input type="text" name="pin" id="textfield4" /></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <th scope="row">POST</th>#}
+{#    <td><label for="textfield5"></label>#}
+{#      <input type="text" name="post" id="textfield5" /></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <th scope="row">PLACE</th>#}
+{#    <td><label for="textfield6"></label>#}
+{#      <input type="text" name="place" id="textfield6" /></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <th scope="row">PASSWORD</th>#}
+{#    <td><label for="textfield7"></label>#}
+{#      <input type="text" name="password" id="textfield7" /></td>#}
+{#  </tr>#}
+{##}
+{#    <tr>#}
+{#    <th scope="row">CONFORM PASSWORD</th>#}
+{#    <td><label for="textfield7"></label>#}
+{#      <input type="text" name="conf_password" id="textfield7" /></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <th colspan="2" scope="row"><input type="submit" name="button" id="button" value="register" /></th>#}
+{#    </tr>#}
+{#</table>#}
+{##}
+{#</form>#}
+{##}
+{##}
+{#</body>#}
+{#</html>#}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>User Registration</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #121212; /* Dark background */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  form {
+    background-color: rgba(255, 255, 255, 0.1); /* Transparent form background */
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Soft shadow */
+    backdrop-filter: blur(5px); /* Blur effect */
+  }
+
+  table {
+    width: 100%;
+  }
+
+  th, td {
+    padding: 10px;
+    text-align: left;
+    color: white;
+  }
+
+  th {
+    font-size: 1em;
+    font-weight: bold;
+  }
+
+  input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.2); /* Transparent input background */
+    color: white;
+  }
+
+  input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745; /* Green button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #218838;
+  }
+
+  input[type="submit"]:focus {
+    outline: none;
+  }
+</style>
+</head>
+
+<body>
+<form action="/user_register_post" method="post">
+  <table>
+    <tr>
+      <th scope="row">NAME</th>
+      <td>
+        <input type="text" name="name" id="textfield" placeholder="Enter your name" required />
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">PHONE</th>
+      <td>
+        <input type="text" name="phone" id="textfield2" placeholder="Enter your phone number" required  pattern="[6-9][0-9]{9}"/>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">EMAIL</th>
+      <td>
+        <input type="text" name="email" id="textfield3" placeholder="Enter your email" required  pattern=".+@.+\..+"/>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">PIN</th>
+      <td>
+        <input type="text" name="pin" id="textfield4" placeholder="Enter your PIN" required  pattern="[6][0-9]{5}"/>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">POST</th>
+      <td>
+        <input type="text" name="post" id="textfield5" placeholder="Enter your post" required />
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">PLACE</th>
+      <td>
+        <input type="text" name="place" id="textfield6" placeholder="Enter your place" required />
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">PASSWORD</th>
+      <td>
+        <input type="password" name="password" id="textfield7" placeholder="Enter your password" required  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"/>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">CONFIRM PASSWORD</th>
+      <td>
+        <input type="password" name="conf_password" id="textfield7" placeholder="Confirm your password" required  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"/>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="2" scope="row">
+        <input type="submit" name="button" id="button" value="Register" />
+      </th>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

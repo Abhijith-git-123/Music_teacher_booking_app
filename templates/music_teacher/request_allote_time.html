@@ -1,0 +1,104 @@
+{#{% extends 'music_teacher/musicteacher_index.html' %}#}
+{#{% block teacher %}#}
+{##}
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<table width="400" border="1">#}
+{#  <tr>#}
+{#    <th width="46" scope="row">NO</th>#}
+{#    <td width="100">USER NAME</td>#}
+{#    <td width="73">REQUESTED FOR</td>#}
+{#    <td width="73">REQUESTED DATE</td>#}
+{#    <td width="74">&nbsp;</td>#}
+{#  </tr>#}
+{#    {% for i in data13 %}#}
+{#  <tr>#}
+{#    <th scope="row">{{ forloop.counter }}</th>#}
+{#    <td>{{ i.USER.name }}</td>#}
+{#    <td>{{ i.OWN_CATEGORY.CATEGORY.category_name }}</td>#}
+{#    <td>{{ i.request_date }}</td>#}
+{#    <td><a href="/view_alote_time/{{ i.OWN_CATEGORY.id }}/{{ i.id }}">allot times</a></td>#}
+{#  </tr>#}
+{#    {% endfor %}#}
+{#</table>#}
+{##}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+
+{% extends 'music_teacher/musicteacher_index.html' %}
+{% block teacher %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Allotment Requests</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: white; /* Text color for better visibility on dark background */
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: rgba(0, 0, 0, 0.6); /* Transparent background */
+            border-radius: 10px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #fff; /* White border for contrast */
+        }
+        th {
+            background-color: rgba(255, 255, 255, 0.2); /* Slightly more opaque header */
+            font-weight: bold;
+        }
+        td a {
+            color: #00aaff; /* Link color */
+            text-decoration: none;
+        }
+        td a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<table id="music">
+  <tr>
+    <th>NO</th>
+    <td>USER NAME</td>
+    <td>REQUESTED FOR</td>
+    <td>REQUESTED DATE</td>
+    <td>ACTIONS</td>
+  </tr>
+  {% for i in data13 %}
+      {% if i.r == "0" %}
+
+      {% else %}
+       <tr>
+    <th scope="row">{{ forloop.counter }}</th>
+    <td>{{ i.USER.name }}</td>
+    <td>{{ i.OWN_CATEGORY.CATEGORY.category_name }}</td>
+    <td>{{ i.request_date }}{{ i.r }}</td>
+    <td>
+        <div class="btn btn-success" style="background-color: deepskyblue;"><a href="/view_alote_time/{{ i.OWN_CATEGORY.id }}/{{ i.id }}#module2" style=" color: white">Allot Times</a></div>
+    </td>
+  </tr>
+
+      {% endif %}
+
+  {% endfor %}
+</table>
+
+</body>
+</html>
+{% endblock %}

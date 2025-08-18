@@ -1,0 +1,101 @@
+{#{% extends 'user/user_index.html' %}#}
+{#{% block user %}#}
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form action="/send_feedback_post" method="post">#}
+{#<table width="200" border="1">#}
+{#  <tr>#}
+{#    <th scope="row">FEEDBACK</th>#}
+{#    <td><label for="textarea"></label>#}
+{#      <textarea name="feed" id="textarea" cols="45" rows="5"></textarea></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <th height="33" colspan="2" scope="row"><input type="submit" name="button" id="button" value="SEND" /></th>#}
+{#    </tr>#}
+{#</table>#}
+{##}
+{#</form>#}
+{##}
+{##}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+
+{% extends 'user/user_index.html' %}
+{% block user %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: white; /* Text color for better visibility on dark background */
+        }
+        table {
+            width: 60%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: rgba(0, 0, 0, 0.6); /* Transparent background */
+            border-radius: 15px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Box shadow for depth */
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #fff; /* White border for contrast */
+        }
+        th {
+            background-color: rgba(255, 255, 255, 0.2); /* Slightly more opaque header */
+            font-weight: bold;
+            text-align: center;
+        }
+        textarea {
+            width: 95%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background for textarea */
+            color: white;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            background-color: #00aaff;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #007acc; /* Darker shade on hover */
+        }
+    </style>
+</head>
+<body>
+
+<form action="/send_feedback_post" method="post">
+<table>
+  <tr>
+    <th scope="row">FEEDBACK</th>
+    <td><textarea name="feed" id="textarea" cols="45" rows="5" required></textarea></td>
+  </tr>
+  <tr>
+    <th colspan="2" scope="row">
+      <input type="submit" name="button" id="button" value="SEND" />
+    </th>
+  </tr>
+</table>
+</form>
+
+</body>
+</html>
+{% endblock %}

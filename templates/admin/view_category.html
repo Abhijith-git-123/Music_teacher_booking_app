@@ -1,0 +1,130 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<table width="400" border="1">#}
+{#  <tr>#}
+{#    <th width="103" scope="row">No</th>#}
+{#    <td width="157">category</td>#}
+{#    <td width="118">&nbsp;</td>#}
+{#  </tr>#}
+{#    {% for i in data %}#}
+{#  <tr>#}
+{#    <th scope="row">&nbsp{{ forloop.counter }}</th>#}
+{#    <td>&nbsp{{ i.category_name }}</td>#}
+{#    <td><a href="/edit_category_get/{{ i.id }}">edit</a><br /><a href="/delete_category/{{ i.id }}">delete</a></td>#}
+{#  </tr>#}
+{#    {% endfor %}#}
+{#</table>#}
+{##}
+{##}
+{#</body>#}
+{#</html>#}
+{% extends 'admin/admin_index.html' %}
+{% block admin %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Category List</title>
+    <style>
+        /* Scope all styles to the .admin-table-container class */
+        .admin-table-container {
+            font-family: Arial, sans-serif;
+            color: #ffffff; /* Light text color */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Table Styling */
+        .admin-table-container .styled-table {
+            width: 50%;
+            border-collapse: collapse;
+            background-color: rgba(255, 255, 255, 0.30); /* Transparent background */
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            margin: 20px 0;
+        }
+
+        .admin-table-container .styled-table th,
+        .admin-table-container .styled-table td {
+            padding: 12px 15px;
+            text-align: center;
+            color: #ffffff; /* Light text color */
+        }
+
+        .admin-table-container .styled-table th {
+            background-color: rgba(0, 0, 0, 0.7); /* Darker header background */
+        }
+
+        .admin-table-container .styled-table td {
+            background-color: rgba(0, 0, 0, 0.4); /* Slightly lighter cell background */
+        }
+
+        .admin-table-container .styled-table tr:hover {
+            background-color: rgba(255, 255, 255, 0.2); /* Highlight on hover */
+        }
+
+        /* Link Styling */
+        .admin-table-container .styled-table a {
+            color: #4CAF50; /* Green links */
+            text-decoration: none;
+            display: inline-block;
+            margin: 5px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .admin-table-container .styled-table a.edit {
+            background-color: #007bff; /* Blue for edit */
+        }
+
+        .admin-table-container .styled-table a.edit:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        .admin-table-container .styled-table a.delete {
+            background-color: #dc3545; /* Red for delete */
+        }
+
+        .admin-table-container .styled-table a.delete:hover {
+            background-color: #a71d2a; /* Darker red on hover */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="admin-table-container">
+
+        <table class="styled-table" id="adm">
+            <tr>
+                <th width="103" scope="row">No</th>
+                <th width="157">Category</th>
+                <th width="118">Action</th>
+            </tr>
+            {% for i in data %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ i.category_name }}</td>
+                <td>
+                    <a href="/edit_category_get/{{ i.id }}#module1" class="edit">Edit</a>
+                    <a href="/delete_category/{{ i.id }}" class="delete" onclick="return confirm('Are you sure?')">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
+{% endblock %}

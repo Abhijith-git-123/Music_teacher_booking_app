@@ -1,0 +1,146 @@
+{#{% extends 'music_teacher/musicteacher_index.html' %}#}
+{#{% block teacher %}#}
+{##}
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form action="/edi_time_sloat_post/{{ data11.id }}" method="post">#}
+{#<table width="400" border="1">#}
+{#  <tr>#}
+{#    <th width="212" scope="row">DAY</th>#}
+{#    <td width="172"><label for="textfield3"></label>#}
+{#      <input type="text" name="days" id="textfield3" value="{{ data11.day }}" /></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <th scope="row">START TIME</th>#}
+{#    <td><label for="textfield4"></label>#}
+{#      <input type="time" name="strtime" id="textfield4" value="{{ data11.starttime }}"/></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <th scope="row">END TIME</th>#}
+{#    <td><label for="textfield5"></label>#}
+{#      <input type="time" name="endtime" id="textfield5" value="{{ data11.endtime }}"/></td>#}
+{#  </tr>#}
+{#  <tr>#}
+{#    <th colspan="2" scope="row"><input type="submit" name="button" id="button" value="update" /></th>#}
+{#    </tr>#}
+{#</table>#}
+{##}
+{#</form>#}
+{##}
+{##}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+
+{% extends 'music_teacher/musicteacher_index.html' %}
+{% block teacher %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Edit Time Slot</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            /* Background image already set in the parent template */
+        }
+
+        /* Form Styling */
+        .styled-form {
+            width: 400px;
+            margin: 20px auto;
+            background-color: rgba(255, 255, 255, 0.3); /* Transparent background */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.6); /* Subtle shadow for better visibility */
+            padding: 20px;
+        }
+
+        .styled-form table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .styled-form th, .styled-form td {
+            padding: 15px;
+            text-align: left;
+        }
+
+        .styled-form th {
+            background-color: rgba(0, 0, 0, 0.6); /* Darker header background */
+            color: #fff; /* Light text for contrast */
+        }
+
+        .styled-form td {
+            background-color: rgba(0, 0, 0, 0.4); /* Lighter cell background */
+        }
+
+        /* Input and Button Styling */
+        input[type="text"], input[type="time"], input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50; /* Green background for button */
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <form action="/edi_time_sloat_post/{{ data11.id }}" method="post" class="styled-form">
+        <table>
+              <tr>
+               <th scope="row">Department:</th>
+               <td><label for="select"></label>
+                <select name="days" id="select" required>
+           <option value="Monday"  {% if data11.day == 'Monday'  %} selected{% endif %}>Monday</option>
+           <option value="Tuesday"  {% if data11.day == 'Tuesday'  %} selected{% endif %}>Tuesday</option>
+           <option value="Wednesday"  {% if data11.day == 'Wednesday'  %} selected{% endif %}>Wednesday</option>
+          <option value="Thursday"  {% if data11.day == 'Thursday'  %} selected{% endif %}>Thursday</option>
+          <option value="Friday"  {% if data11.day == 'Friday'  %} selected{% endif %}>Friday</option>
+          <option value="Saturday"  {% if data11.day == 'Saturday'  %} selected{% endif %}>Saturday</option>
+      </select></td>
+  </tr>
+
+            <tr>
+                <th scope="row">START TIME</th>
+                <td>
+                    <input type="time" name="strtime" id="textfield4" value="{{ data11.starttime }}"  required/>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">END TIME</th>
+                <td>
+                    <input type="time" name="endtime" id="textfield5" value="{{ data11.endtime }}" required />
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2" scope="row">
+                    <input type="submit" name="button" id="button" value="Update" />
+                </th>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+{% endblock %}

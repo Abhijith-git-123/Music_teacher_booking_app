@@ -1,0 +1,105 @@
+{#{% extends 'music_teacher/musicteacher_index.html' %}#}
+{#{% block teacher %}#}
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<table width="400" border="1">#}
+{#  <tr>#}
+{#    <th width="52" scope="row">NO</th>#}
+{#    <td width="200">CATEGORY NAME</td>#}
+{#    <td width="126">&nbsp;</td>#}
+{#  </tr>#}
+{#    {% for i in data7 %}#}
+{#  <tr>#}
+{#    <th scope="row">{{ forloop.counter }}</th>#}
+{#    <td>{{ i.category_name }}</td>#}
+{#    {% if i.status == '1'  %}#}
+{#      <td><a href="/add_own_category_get/{{ i.id }}">add to my category</a></td>#}
+{#    {% else %}#}
+{#       <td>already selected</td>#}
+{#    {% endif %}#}
+{#  </tr>#}
+{#    {% endfor %}#}
+{#</table>#}
+{##}
+{##}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+
+{% extends 'music_teacher/musicteacher_index.html' %}
+{% block teacher %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Category List</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    table {
+        width: 400px;
+        border-collapse: collapse;
+        margin: 20px 0;
+        background: rgba(255, 255, 255, 0.20); /* Transparent background */
+        color: #fff; /* White text for contrast on dark background */
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.10); /* Subtle shadow for depth */
+        border-radius: 10px; /* Rounded corners */
+        overflow: hidden; /* Rounds corners properly for table */
+    }
+
+    th, td {
+        padding: 12px 15px; /* Add some padding for spacing */
+        text-align: left; /* Left-align the content */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border line */
+    }
+
+    th {
+        background-color: rgba(0, 0, 0, 0.3); /* Slightly darker for the header */
+        font-weight: bold; /* Bold font for headers */
+    }
+
+    tr:hover {
+        background-color: rgba(255, 255, 255, 0.2); /* Hover effect */
+    }
+
+    a {
+        color: #00bfff; /* Light blue for links */
+        text-decoration: none; /* No underline for links */
+    }
+
+    a:hover {
+        text-decoration: underline; /* Underline on hover */
+    }
+</style>
+</head>
+
+<body>
+    <table id="music">
+        <tr>
+            <th width="52" scope="row">NO</th>
+            <th width="200">CATEGORY NAME</th>
+            <th width="126">&nbsp;</th>
+        </tr>
+        {% for i in data7 %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ i.category_name }}</td>
+            {% if i.status == '1'  %}
+                <th><div class="btn btn-success"><a href="/add_own_category_get/{{ i.id }}#module2" style="color: wheat">add to my category</a></div></th>
+            {% else %}
+                <th>already selected</th>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+{% endblock %}

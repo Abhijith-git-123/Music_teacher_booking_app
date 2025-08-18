@@ -1,0 +1,158 @@
+{#{% extends 'user/user_index.html' %}#}
+{#{% block user %}#}
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<table width="200" border="1">#}
+{#  <tr>#}
+{#    <th scope="row">NO</th>#}
+{#    <td>MUSIC TEACHER NAME</td>#}
+{#    <td>FESS</td>#}
+{#    <td>AVG RATING</td>#}
+{#    <td></td>#}
+{#  </tr>#}
+{#    {% for i in data18 %}#}
+{#  <tr>#}
+{#    <td scope="row">{{ forloop.counter }}</td>#}
+{#    <td>{{ i.MUSIC_TEACHER.name }}</td>#}
+{#    <td>{{ i.fees }}</td>#}
+{##}
+{#    <td>{% if i.rating == "0" %}#}
+{#        no rating#}
+{#      {% elif i.rating == "1" %}#}
+{#        ★☆☆☆☆#}
+{#      {% elif i.rating == "2" %}#}
+{#        ★★☆☆☆#}
+{#      {% elif i.rating == "3" %}#}
+{#        ★★★☆☆#}
+{#      {% elif i.rating == "4" %}#}
+{#        ★★★★☆#}
+{#      {% elif i.rating == "5" %}#}
+{#        ★★★★★#}
+{#             {% endif %}<br><a href="/user_view_rating/{{ i.MUSIC_TEACHER.id }}">view rating</a></td>#}
+{##}
+{#    {% if i.rr == '1' %}#}
+{#    <td><a href="/send_request/{{ i.id }}">send_request</a></td>#}
+{#    {% else %}#}
+{#     <td>request already sended</td>#}
+{##}
+{#    {% endif %}#}
+{##}
+{##}
+{#  </tr>#}
+{#    {% endfor %}#}
+{#</table>#}
+{##}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+{% extends 'user/user_index.html' %}
+{% block user %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Music Teacher Ratings</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 50px auto;
+    background-color: rgba(255, 255, 255, 0.1); /* Transparent background */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    backdrop-filter: blur(5px); /* Blur effect for background */
+  }
+
+  th, td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Soft border */
+    color: white;
+  }
+
+  th {
+    background-color: rgba(0, 0, 0, 0.5); /* Slightly darker for headers */
+    font-size: 1.1em;
+    font-weight: bold;
+  }
+
+  tr:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Light hover effect */
+  }
+
+  a {
+    color: #28a745; /* Green link */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+
+  a:hover {
+    color: #218838; /* Darker green on hover */
+  }
+
+  .rating {
+    font-size: 1.2em;
+    color: #f4c542; /* Gold color for stars */
+  }
+</style>
+</head>
+
+<body>
+<table>
+  <tr>
+    <th>NO</th>
+    <th>MUSIC TEACHER NAME</th>
+    <th>FEES</th>
+    <th>AVG RATING</th>
+    <th></th>
+    <th></th>
+  </tr>
+  {% for i in data18 %}
+  <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ i.MUSIC_TEACHER.name }}<br><br>{{ i.MUSIC_TEACHER.email }}<br><br>{{ i.MUSIC_TEACHER.phone }}</td>
+    <td>{{ i.fees }}</td>
+
+    <td>
+      {% if i.rating == "0" %}
+        no rating
+      {% elif i.rating == "1" %}
+        <span class="rating">★☆☆☆☆</span>
+      {% elif i.rating == "2" %}
+        <span class="rating">★★☆☆☆</span>
+      {% elif i.rating == "3" %}
+        <span class="rating">★★★☆☆</span>
+      {% elif i.rating == "4" %}
+        <span class="rating">★★★★☆</span>
+      {% elif i.rating == "5" %}
+        <span class="rating">★★★★★</span>
+      {% endif %}
+      <br><a href="/user_view_rating/{{ i.MUSIC_TEACHER.id }}#module3">view rating</a>
+    </td>
+   <td><a href="https://www.google.co.in/maps/?q={{ i.MUSIC_TEACHER.latitude }},{{ i.MUSIC_TEACHER.longitude }}">Click here</a></td>
+    <td>
+      {% if i.rr == '1' %}
+      <a href="/send_request/{{ i.id }}">send request</a>
+      {% else %}
+      request already sent
+      {% endif %}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+
+</body>
+</html>
+{% endblock %}

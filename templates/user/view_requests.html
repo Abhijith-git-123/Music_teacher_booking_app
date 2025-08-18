@@ -1,0 +1,99 @@
+{#{% extends 'user/user_index.html' %}#}
+{#{% block user %}#}
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<table width="200" border="1">#}
+{#  <tr>#}
+{#    <th scope="row">NO</th>#}
+{#    <td>TEACHER NAME</td>#}
+{#    <td>CATEGORY</td>#}
+{#    <td>ALLOTED TIME</td>#}
+{#    <td>ALLOTED DAY</td>#}
+{#    <td></td>#}
+{#  </tr>#}
+{#    {% for i in data20 %}#}
+{#  <tr>#}
+{#    <th scope="row">{{ forloop.counter }}</th>#}
+{#    <td>{{ i.CLASS_NEW.MUSIC_TEACHER.name }}</td>#}
+{#    <td>{{ i.REQUESTS.OWN_CATEGORY.CATEGORY.category_name }}</td>#}
+{#    <td>{{ i.CLASS_NEW.starttime }}<br/>{{ i.CLASS_NEW.endtime }}</td>#}
+{#    <td>{{ i.CLASS_NEW.day }}</td>#}
+{#    <td><a href="/send_rating_get/{{ i.CLASS_NEW.MUSIC_TEACHER.id }}">send rating</a></td>#}
+{#  </tr>#}
+{#    {% endfor %}#}
+{#</table>#}
+{##}
+{##}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+
+{% extends 'user/user_index.html' %}
+{% block user %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Allotted Time and Rating</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: white; /* Text color for better visibility on dark background */
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: rgba(0, 0, 0, 0.50); /* Transparent background */
+            border-radius: 15px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.10); /* Box shadow for depth */
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #fff; /* White border for contrast */
+        }
+        th {
+            background-color: rgba(255, 255, 255, 0.2); /* Slightly more opaque header */
+            font-weight: bold;
+        }
+        td a {
+            color: #00aaff; /* Link color */
+            text-decoration: none;
+        }
+        td a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<table>
+  <tr>
+    <th>NO</th>
+    <td>TEACHER NAME</td>
+    <td>CATEGORY</td>
+    <td>requested date</td>
+    <td>request status</td>
+  </tr>
+  {% for i in data %}
+  <tr>
+    <th scope="row">{{ forloop.counter }}</th>
+    <td>{{ i.OWN_CATEGORY.MUSIC_TEACHER.name }}<br><br>{{ i.OWN_CATEGORY.MUSIC_TEACHER.email }}<br><br>{{ i.OWN_CATEGORY.MUSIC_TEACHER.phone }}<br><br>{{ i.OWN_CATEGORY.MUSIC_TEACHER.place }}</td>
+    <td>{{ i.OWN_CATEGORY.CATEGORY.category_name }}</td>
+    <td>{{ i.request_date }}</td>
+    <td>{{ i.status }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+</body>
+</html>
+{% endblock %}
