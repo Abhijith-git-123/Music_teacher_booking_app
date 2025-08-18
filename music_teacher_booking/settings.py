@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ovc0hr-#7!dwkh0h^#fe%i1d_t-jaya9joc9!9r2vd0s3#w*e6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["music-teacher-booking-website.onrender.com"]
 
 
 # Application definition
