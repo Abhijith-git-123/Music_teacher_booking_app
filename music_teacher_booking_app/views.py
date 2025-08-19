@@ -417,8 +417,8 @@ def user_index(request):
 
 
 def user_register(request):
-    if request.session['login'] == "0":
-        return HttpResponse("<script>alert('Your session has expired');window.location='/'</script>")
+    # if request.session['login'] == "0":
+    #     return HttpResponse("<script>alert('Your session has expired');window.location='/'</script>")
     return render(request,'user/user_register.html')
 
 def user_register_post(request):
