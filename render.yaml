@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: my-django-app
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn music_teacher_booking.wsgi:application
+    postDeployCommand: |
+      python manage.py migrate --noinput
+      python manage.py collectstatic --noinput
